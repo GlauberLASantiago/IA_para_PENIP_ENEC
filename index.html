@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IA como auxiliar na elaboração do PEDIP</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         /* Use the Inter font family defined in the <link> tag */
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            color: #ffffff !important; /* Força o texto branco no body */
         }
-        
+
         /* New Color Palette Variables */
         :root {
             --color-primary: #1E40FB;
@@ -33,7 +34,7 @@
         body {
             background: linear-gradient(135deg, #f0f4ff 0%, #fffde7 100%);
         }
-        
+
         .dark body {
              background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
         }
@@ -51,15 +52,16 @@
         /* Styling for the interactive list's active item */
         .interactive-list-item.active {
             background-color: var(--color-accent) !important;
-            color: var(--color-text-dark) !important;
+            color: var(--color-text-dark) !important; /* Mantém a cor escura para o item ativo */
             font-weight: 600;
             transform: translateX(5px);
             border-left: 4px solid var(--color-primary);
         }
-        
+
         /* Smooth transition for list items */
         .interactive-list-item {
             transition: all 0.3s ease-in-out;
+            color: #ffffff !important; /* Força o texto branco nos itens da lista */
         }
 
         /* Styling for section headers */
@@ -67,16 +69,36 @@
             border-bottom: 2px solid var(--color-accent);
             padding-bottom: 8px;
             margin-bottom: 24px;
+            color: #ffffff !important; /* Força o texto branco nos headers */
         }
 
         /* Helper classes for new colors */
-        .text-primary { color: var(--color-primary); }
+        .text-primary { color: var(--color-primary); } /* Mantém a cor primária para outros usos, se houver */
         .bg-primary { background-color: var(--color-primary); }
-        .text-success { color: var(--color-success); }
+        .text-success { color: var(--color-success); } /* Mantém a cor de sucesso para outros usos, se houver */
         .hover-bg-primary-dark:hover { filter: brightness(1.1); }
         .card-hover:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Override Tailwind text colors */
+        .text-slate-300, .dark\:text-slate-300,
+        .dark\:text-white, .text-indigo-100,
+        .text-red-100, .text-green-100,
+        .text-gray-500, .dark\:text-gray-400,
+        .text-primary.dark\:text-blue-400,
+        .dark\:text-white,
+        .text-green-800 {
+            color: #ffffff !important;
+        }
+
+        /* Override inline text colors no header */
+        header nav div.text-xl.font-bold span {
+            color: #ffffff !important;
+        }
+        header nav div.hidden.md\:flex.space-x-6 a {
+            color: #ffffff !important;
         }
     </style>
 </head>
@@ -84,14 +106,14 @@
 
     <header class="bg-white dark:bg-slate-800 shadow-lg sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold" style="color: var(--color-text-dark);">
+            <div class="text-xl font-bold">
                 <span class="text-primary dark:text-blue-400">IA</span> <span class="dark:text-white">como auxiliar na elaboração do PEDIP</span>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="hidden md:flex space-x-6">
-                    <a href="#inicio" class="dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition" style="color: var(--color-text-dark);">Início</a>
-                    <a href="#como-ajuda" class="dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition" style="color: var(--color-text-dark);">Como Ajuda?</a>
-                    <a href="#ferramentas" class="dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition" style="color: var(--color-text-dark);">Ferramentas</a>
+                    <a href="#inicio" class="dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition">Início</a>
+                    <a href="#como-ajuda" class="dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition">Como Ajuda?</a>
+                    <a href="#ferramentas" class="dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition">Ferramentas</a>
                 </div>
                 <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
                     <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
@@ -113,17 +135,17 @@
         </section>
 
         <section id="como-ajuda" class="py-16">
-            <h2 class="text-3xl font-bold text-center section-header" style="color: var(--color-text-dark);">
+            <h2 class="text-3xl font-bold text-center section-header">
                 <span class="dark:text-white">Como a IA pode Auxiliar?</span>
             </h2>
-            <p class="text-center mb-12 max-w-2xl mx-auto dark:text-slate-300" style="color: var(--color-text-dark);">Clique nos diferentes trechos do plano abaixo para descobrir como a Inteligência Artificial pode contribuir em cada etapa. A IA é uma assistente, mas a decisão final e consciente sempre será sua.</p>
-            
+            <p class="text-center mb-12 max-w-2xl mx-auto dark:text-slate-300">Clique nos diferentes trechos do plano abaixo para descobrir como a Inteligência Artificial pode contribuir em cada etapa. A IA é uma assistente, mas a decisão final e consciente sempre será sua.</p>
+
             <div class="flex flex-col md:flex-row bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden min-h-[450px]">
                 <div class="w-full md:w-1/3 bg-slate-50 dark:bg-slate-900/50">
                     <ul id="interactive-list" class="p-4 space-y-2">
                         </ul>
                 </div>
-                
+
                 <div id="interactive-content" class="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
                     </div>
             </div>
@@ -132,7 +154,7 @@
         <section id="ferramentas" class="py-16 my-8 rounded-3xl" style="background-color: var(--color-text-dark);">
             <h2 class="text-3xl font-bold text-center section-header text-white">Ferramentas Práticas: Assistentes GPT</h2>
             <p class="text-center mb-12 max-w-2xl mx-auto text-slate-300">Para facilitar, criamos assistentes (GPTs) que já incorporam as instruções certas para focar em partes cruciais do seu plano. Experimente estas ferramentas para acelerar seu trabalho.</p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card-hover rounded-2xl p-8 text-center transition-all duration-300" style="background-color: var(--color-primary);">
                     <img src="icone-objetivos.png" alt="Ícone do assistente de Objetivos" class="w-20 h-20 mx-auto mb-4 bg-white p-2 rounded-full">
@@ -167,7 +189,7 @@
 
     <footer class="mt-16 border-t" style="background-color: var(--color-text-dark);">
         <div class="container mx-auto px-6 py-8 text-center text-slate-400">
-            <p>Desenvolvido por Glauber Santiago - UFSCar, 2025</p>
+            <p style="color: #ffffff !important;">Desenvolvido por Glauber Santiago - UFSCar, 2025</p>
         </div>
     </footer>
 
@@ -236,38 +258,38 @@
 
             const listContainer = document.getElementById('interactive-list');
             const contentContainer = document.getElementById('interactive-content');
-            
+
             Object.keys(interactiveData).forEach((key) => {
-                const item = interactiveData[key];
+                const item = interactiveData\[key];
                 const li = document.createElement('li');
-                li.innerHTML = `
-                    <button data-key="${key}" class="interactive-list-item w-full text-left px-5 py-4 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700" style="color: var(--color-text-dark);">
-                       <span class="dark:text-white">${item.title}</span>
+                li.innerHTML = \`
+                    <button data-key="${key}" class="interactive-list-item w-full text-left px-5 py-4 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700">
+                       <span>${item.title}</span>
                     </button>
-                `;
+                \`;
                 listContainer.appendChild(li);
             });
 
             function updateContent(key) {
-                const itemData = interactiveData[key];
+                const itemData = interactiveData\[key];
                 if (!itemData) return;
 
                 contentContainer.style.opacity = '0';
 
                 setTimeout(() => {
-                    contentContainer.innerHTML = `
-                        <div class="fade-in">
+                    contentContainer.innerHTML = \`
+                        <div class="fade-in" style="color: #ffffff !important;">
                             <h3 class="text-2xl md:text-3xl font-bold text-primary dark:text-blue-400 mb-6">${itemData.title}</h3>
                             <ul class="space-y-4">
-                                ${itemData.points.map(point => `
-                                    <li class="flex items-start">
+                                ${itemData.points.map(point => \`
+                                    <li class="flex items-start" style="color: #ffffff !important;">
                                         <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" style="color: var(--color-success);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        <span class="text-lg dark:text-slate-300" style="color: var(--color-text-dark);">${point}</span>
+                                        <span>${point}</span>
                                     </li>
-                                `).join('')}
+                                \`).join('')}
                             </ul>
                         </div>
-                    `;
+                    \`;
                     contentContainer.style.opacity = '1';
                 }, 200);
             }
@@ -276,7 +298,7 @@
                 const button = e.target.closest('.interactive-list-item');
                 if (button) {
                     const key = button.dataset.key;
-                    
+
                     document.querySelectorAll('.interactive-list-item').forEach(item => {
                         item.classList.remove('active');
                     });
