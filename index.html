@@ -1,1 +1,306 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA na Elaboração do Plano de Educação Digital</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles and Animations with New Color Palette -->
+    <style>
+        /* Use the Inter font family defined in the <link> tag */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* New Color Palette Variables */
+        :root {
+            --color-primary: #1E40FB;
+            --color-danger: #FC0019;
+            --color-accent: #FECF2F;
+            --color-success: #1FD025;
+            --color-text-dark: #434344;
+            --color-background: #F9F9F9;
+            --color-white: #ffffff;
+        }
+
+        /* Applying a vibrant gradient background */
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #fffde7 100%);
+        }
+
+        /* Animation for content fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        /* Styling for the interactive list's active item */
+        .interactive-list-item.active {
+            background-color: var(--color-accent) !important;
+            color: var(--color-text-dark) !important;
+            font-weight: 600;
+            transform: translateX(5px);
+            border-left: 4px solid var(--color-primary);
+        }
+        
+        /* Smooth transition for list items */
+        .interactive-list-item {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling for section headers */
+        .section-header {
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+        }
+
+        /* Helper classes for new colors */
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-success { color: var(--color-success); }
+        .hover-bg-primary-dark:hover { filter: brightness(1.1); }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold" style="color: var(--color-text-dark);">
+                <span class="text-primary">IA</span> na Educação
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#inicio" class="hover:text-primary transition" style="color: var(--color-text-dark);">Início</a>
+                <a href="#como-ajuda" class="hover:text-primary transition" style="color: var(--color-text-dark);">Como Ajuda?</a>
+                <a href="#ferramentas" class="hover:text-primary transition" style="color: var(--color-text-dark);">Ferramentas</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6">
+
+        <!-- Hero Section -->
+        <section id="inicio" class="text-center py-20 my-8 rounded-3xl" style="background-color: var(--color-primary);">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 leading-tight text-white">
+                IA na Elaboração do Plano de <span style="color: var(--color-accent);">Educação Digital</span>
+            </h1>
+            <p class="text-lg max-w-3xl mx-auto text-indigo-100">
+                A Inteligência Artificial é uma ferramenta poderosa para auxiliar na construção do seu Plano de Educação Digital, mas é crucial entender seu papel como <strong>assistente</strong>. Um plano de qualidade, que realmente atenda às necessidades da sua rede, não pode ser viabilizado apenas pela IA. É fundamental que o processo seja cuidadosamente gerido por um humano. Sem a devida supervisão, contextualização e o conhecimento profundo da realidade local, a IA corre o risco de gerar propostas genéricas ou totalmente inadequadas, que não se alinham aos desafios e oportunidades específicos da sua comunidade escolar.
+            </p>
+        </section>
+
+        <!-- Interactive "How AI Helps" Section -->
+        <section id="como-ajuda" class="py-16">
+            <h2 class="text-3xl font-bold text-center section-header" style="color: var(--color-text-dark);">Como a IA pode Auxiliar?</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto" style="color: var(--color-text-dark);">Clique nos diferentes trechos do plano abaixo para descobrir como a Inteligência Artificial pode contribuir em cada etapa. A IA é uma assistente, mas a decisão final e consciente sempre será sua.</p>
+            
+            <div class="flex flex-col md:flex-row bg-white rounded-2xl shadow-xl overflow-hidden min-h-[450px]">
+                <!-- Left: Clickable List -->
+                <div class="w-full md:w-1/3 bg-slate-50">
+                    <ul id="interactive-list" class="p-4 space-y-2">
+                        <!-- List items will be populated by JavaScript -->
+                    </ul>
+                </div>
+                
+                <!-- Right: Dynamic Content Display -->
+                <div id="interactive-content" class="w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- "Practical Tools" Section -->
+        <section id="ferramentas" class="py-16 my-8 rounded-3xl" style="background-color: var(--color-text-dark);">
+            <h2 class="text-3xl font-bold text-center section-header text-white">Ferramentas Práticas: Assistentes GPT</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto text-slate-300">Para facilitar, criamos assistentes (GPTs) que já incorporam as instruções certas para focar em partes cruciais do seu plano. Experimente estas ferramentas para acelerar seu trabalho.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1: F.O.F.A. & Objectives -->
+                <div class="card-hover rounded-2xl p-8 text-center transition-all duration-300" style="background-color: var(--color-primary);">
+                    <img src="icone-objetivos.png" alt="Ícone do assistente de Objetivos" class="w-20 h-20 mx-auto mb-4 bg-white p-2 rounded-full">
+                    <h3 class="text-xl font-bold mb-2 text-white">F.O.F.A. e Objetivos</h3>
+                    <p class="mb-6 text-indigo-100">Use este assistente para formular objetivos claros e mensuráveis, baseados na análise F.O.F.A.</p>
+                    <a href="https://chatgpt.com/g/g-679ce6ea69048191a1d9806345ed9ef4-auxiliapedip-objetivos" target="_blank" class="inline-block bg-white text-primary font-semibold px-6 py-3 rounded-lg hover-bg-primary-dark transition-all">
+                        Acessar GPT
+                    </a>
+                </div>
+
+                <!-- Card 2: Goals -->
+                <div class="card-hover rounded-2xl p-8 text-center transition-all duration-300" style="background-color: var(--color-danger);">
+                    <img src="icone-metas.png" alt="Ícone do assistente de Metas" class="w-20 h-20 mx-auto mb-4 bg-white p-2 rounded-full">
+                    <h3 class="text-xl font-bold mb-2 text-white">Metas</h3>
+                    <p class="mb-6 text-red-100">Guia para a criação de metas SMART (Específicas, Mensuráveis, Alcançáveis, Relevantes e com Prazo).</p>
+                    <a href="https://chatgpt.com/g/g-679ce6ea69048191a1d9806345ed9ef4-auxiliapedip-objetivos" target="_blank" class="inline-block bg-white font-semibold px-6 py-3 rounded-lg hover-bg-primary-dark transition-all" style="color: var(--color-danger);">
+                        Acessar GPT
+                    </a>
+                </div>
+
+                <!-- Card 3: Action Plan -->
+                <div class="card-hover rounded-2xl p-8 text-center transition-all duration-300" style="background-color: var(--color-success);">
+                    <img src="icone-plano-acao.png" alt="Ícone do assistente de Ações" class="w-20 h-20 mx-auto mb-4 bg-white p-2 rounded-full">
+                    <h3 class="text-xl font-bold mb-2 text-white">Plano de Ação</h3>
+                    <p class="mb-6 text-green-100">Elabore o plano de ação e o cronograma de implementação, com prazos e responsáveis.</p>
+                    <a href="https://chatgpt.com/g/g-679e20a0619081919eaf68199da2de3c-auxiliapedip-acoes" target="_blank" class="inline-block bg-white text-green-800 font-semibold px-6 py-3 rounded-lg hover-bg-primary-dark transition-all">
+                        Acessar GPT
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-16 border-t" style="background-color: var(--color-text-dark);">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+            <p>Desenvolvido por Glauber Santiago - UFSCar, 2025</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Data for the interactive section
+            const interactiveData = {
+                apresentacao: {
+                    title: "Apresentação do Plano",
+                    points: [
+                        "<strong>Revisão e melhoria do texto</strong> para garantir clareza e coerência.",
+                        "<strong>Geração de resumos executivos</strong> para facilitar a compreensão do objetivo do plano.",
+                        "<strong>Sugestões de referências e normativas</strong> atualizadas para embasar a apresentação."
+                    ]
+                },
+                dados_rede: {
+                    title: "Dados da Rede",
+                    points: [
+                        "<strong>Organização automática de dados</strong> de diferentes municípios/estados e tipos de rede para personalização do documento.",
+                        "<strong>Processamento e análise de dados do Censo Escolar</strong> para identificar tendências.",
+                        "<strong>Sugestões de tipos de profissionais</strong> para compor a equipe de elaboração."
+                    ]
+                },
+                diagnostico: {
+                    title: "Diagnóstico e F.O.F.A.",
+                    points: [
+                        "<strong>Análise de dados qualitativos e quantitativos</strong> para identificar desafios e oportunidades.",
+                        "<strong>Formulação de objetivos</strong> baseados na análise F.O.F.A. (Forças, Oportunidades, Fraquezas e Ameaças).",
+                        "<strong>Sugestões automatizadas de estratégias</strong> com base nas informações disponíveis."
+                    ]
+                },
+                objetivos: {
+                    title: "Objetivos e Metas",
+                    points: [
+                        "<strong>Redação de objetivos claros e mensuráveis</strong>, com base na análise F.O.F.A.",
+                        "<strong>Definição de metas SMART</strong> (específicas, mensuráveis, alcançáveis, relevantes e com prazo).",
+                        "<strong>Geração de indicadores de desempenho (KPIs)</strong> para monitoramento da evolução."
+                    ]
+                },
+                plano_acao: {
+                    title: "Plano de Ação e Cronograma",
+                    points: [
+                        "<strong>Automatização da criação de cronogramas</strong> com prazos, tarefas e responsáveis.",
+                        "<strong>Sugestão de ações concretas</strong> alinhadas às metas e objetivos estabelecidos.",
+                        "<strong>Geração de modelos de relatórios</strong> para acompanhamento da implementação."
+                    ]
+                },
+                parcerias: {
+                    title: "Parcerias",
+                    points: [
+                        "<strong>Identificação de potenciais parceiros</strong> (empresas, universidades, ONGs) com base em iniciativas existentes.",
+                        "<strong>Sugestão de modelos de convênios</strong> e termos de parceria.",
+                        "<strong>Geração de propostas</strong> para captação de recursos e apoio institucional."
+                    ]
+                },
+                pos_elaboracao: {
+                    title: "Pós-Elaboração",
+                    points: [
+                        "<strong>Revisão e otimização final</strong> do documento completo.",
+                        "<strong>Apoio na capacitação e formação continuada</strong> dos envolvidos.",
+                        "<strong>Avaliação do impacto e sugestão de ajustes</strong> estratégicos com base em dados."
+                    ]
+                }
+            };
+
+            const listContainer = document.getElementById('interactive-list');
+            const contentContainer = document.getElementById('interactive-content');
+            
+            // Populate the list
+            Object.keys(interactiveData).forEach((key) => {
+                const item = interactiveData[key];
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <button data-key="${key}" class="interactive-list-item w-full text-left px-5 py-4 rounded-lg hover:bg-slate-200" style="color: var(--color-text-dark);">
+                        ${item.title}
+                    </button>
+                `;
+                listContainer.appendChild(li);
+            });
+
+            // Function to update content
+            function updateContent(key) {
+                const itemData = interactiveData[key];
+                if (!itemData) return;
+
+                contentContainer.style.opacity = '0';
+
+                setTimeout(() => {
+                    contentContainer.innerHTML = `
+                        <div class="fade-in">
+                            <h3 class="text-2xl md:text-3xl font-bold text-primary mb-6">${itemData.title}</h3>
+                            <ul class="space-y-4">
+                                ${itemData.points.map(point => `
+                                    <li class="flex items-start">
+                                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" style="color: var(--color-success);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        <span class="text-lg" style="color: var(--color-text-dark);">${point}</span>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    contentContainer.style.opacity = '1';
+                }, 200);
+            }
+
+            // Event listener for the list
+            listContainer.addEventListener('click', function(e) {
+                const button = e.target.closest('.interactive-list-item');
+                if (button) {
+                    const key = button.dataset.key;
+                    
+                    document.querySelectorAll('.interactive-list-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    button.classList.add('active');
+
+                    updateContent(key);
+                }
+            });
+
+            // Set initial state
+            const firstItemButton = listContainer.querySelector('.interactive-list-item');
+            if(firstItemButton) {
+                firstItemButton.classList.add('active');
+                updateContent(firstItemButton.dataset.key);
+            }
+        });
+    </script>
+</body>
+</html>
